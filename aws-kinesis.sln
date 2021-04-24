@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "aws-kinesis", "aws-kinesis.csproj", "{8E6A7C40-D273-443A-B76D-CF98EB96D7DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awskinesis.publisher", "src\awskinesis.publisher\awskinesis.publisher.csproj", "{2D91140B-4AD0-4657-933F-687B268D4140}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awskinesis.consumer", "src\awskinesis.consumer\awskinesis.consumer.csproj", "{4E162A56-8C89-4AED-8B55-ECA4D541C441}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "awskinesis.shared", "src\awskinesis.shared\awskinesis.shared.csproj", "{F961A4A2-FD94-4C9F-8088-4070D0F87C8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8E6A7C40-D273-443A-B76D-CF98EB96D7DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E6A7C40-D273-443A-B76D-CF98EB96D7DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E6A7C40-D273-443A-B76D-CF98EB96D7DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E6A7C40-D273-443A-B76D-CF98EB96D7DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D91140B-4AD0-4657-933F-687B268D4140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D91140B-4AD0-4657-933F-687B268D4140}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D91140B-4AD0-4657-933F-687B268D4140}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D91140B-4AD0-4657-933F-687B268D4140}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E162A56-8C89-4AED-8B55-ECA4D541C441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E162A56-8C89-4AED-8B55-ECA4D541C441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E162A56-8C89-4AED-8B55-ECA4D541C441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E162A56-8C89-4AED-8B55-ECA4D541C441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F961A4A2-FD94-4C9F-8088-4070D0F87C8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F961A4A2-FD94-4C9F-8088-4070D0F87C8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F961A4A2-FD94-4C9F-8088-4070D0F87C8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F961A4A2-FD94-4C9F-8088-4070D0F87C8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
