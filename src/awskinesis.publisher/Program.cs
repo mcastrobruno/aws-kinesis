@@ -1,20 +1,31 @@
-﻿using Amazon.Kinesis;
-using awskinesis.shared.Kinesis;
+﻿using awskinesis.shared.Kinesis;
 using awskinesis.shared.logger;
 using System;
-using System.IO;
-using System.Text;
 using System.Threading;
 
 namespace awskinesis.publisher
 {
+    public class TestMessage
+    {
+        public Guid Id { get; set; }
+        public string Message { get; set; }
+
+        public TestMessage(string message = "Hello World!")
+        {
+            Id = Guid.NewGuid();
+            Message = message;
+        }
+    }
+
     public class Program
     {
-        private static readonly IAmazonKinesis _kinesisClient;
+        private static KinesisPublisher<TestMessage> _publisher;
+
         static Program()
         {
-            _kinesisClient = KinesisClientFactory.CreateClient();
+            _publisher = new KinesisPublisher<TestMessage>();
         }
+
         static async System.Threading.Tasks.Task Main(string[] args)
         {
             Logger.Log("Starting Kinesis Publisher...");
@@ -25,15 +36,7 @@ namespace awskinesis.publisher
 
                 try
                 {
-                    var response = await _kinesisClient.PutRecordAsync(new Amazon.Kinesis.Model.PutRecordRequest
-                    {
-                        PartitionKey = "dev-01",
-                        StreamName = "dev-kinesis",
-                        Data = new MemoryStream(Encoding.UTF8.GetBytes("This is a test message"))
-                    });
-
-                    Logger.Log($"Response: {response.HttpStatusCode}");
-
+                    await _publisher.PublishAsync(new TestMessage());
                 }
                 catch (Exception e)
                 {
