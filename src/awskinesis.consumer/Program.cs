@@ -5,6 +5,7 @@ using awskinesis.shared.logger;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace awskinesis.consumer
 {
@@ -27,6 +28,13 @@ namespace awskinesis.consumer
                 StreamName = kinesisStreamName
             };
 
+            Logger.Log("Consuming messages...");
+            await Consume(kinesisStreamName, describeRequest);
+            await Task.Delay(5000);
+        }
+
+        private static async Task Consume(string kinesisStreamName, DescribeStreamRequest describeRequest)
+        {
             DescribeStreamResponse describeResponse = await _kinesisClient.DescribeStreamAsync(describeRequest);
             List<Shard> shards = describeResponse.StreamDescription.Shards;
 
