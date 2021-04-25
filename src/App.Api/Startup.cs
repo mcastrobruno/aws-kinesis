@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using App.Api.Models;
+using awskinesis.shared.Kinesis;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +28,8 @@ namespace App.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddSingleton<IKinesisPublisher<TripModel>, KinesisPublisher<TripModel>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

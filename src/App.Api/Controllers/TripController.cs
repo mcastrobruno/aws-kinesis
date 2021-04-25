@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using App.Api.Models;
+using awskinesis.shared.Kinesis;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -12,12 +13,13 @@ namespace App.Api.Controllers
     [Route("[controller]")]
     public class TripController : ControllerBase
     {
-
+        private readonly IKinesisPublisher<TripModel> _publisher;
         private readonly ILogger<TripController> _logger;
 
-        public TripController(ILogger<TripController> logger)
+        public TripController(ILogger<TripController> logger, IKinesisPublisher<TripModel> publisher)
         {
             _logger = logger;
+            _publisher = publisher;
         }
 
         [HttpGet]
@@ -27,12 +29,10 @@ namespace App.Api.Controllers
         }
 
         [HttpPost] 
-        public ActionResult Post([FromBody] TripModel trip)
+        public async Task<ActionResult> PostAsync([FromBody] TripModel trip)
         {
-
-
-
-            throw new NotImplementedException();
+            await _publisher.PublishAsync(trip);
+            return Ok();
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace awskinesis.shared.Kinesis
 {
-    public class KinesisPublisher<TInput> where TInput : class
+    public class KinesisPublisher<TInput> : IKinesisPublisher<TInput> where TInput : class
     {
         private readonly IAmazonKinesis _kinesisClient;
 
