@@ -31,8 +31,8 @@ namespace App.Api.Controllers
         [HttpPost]
         public async Task<ActionResult> PostAsync([FromBody] TripModel trip)
         {
-            //if (trip.Ignition == null)
-            //    return BadRequest();
+            if (trip.Ignition == null)
+                return BadRequest();
 
             await _publisher.PublishAsync(trip);
             return Ok();
