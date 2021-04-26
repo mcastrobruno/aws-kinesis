@@ -11,7 +11,7 @@ namespace App.Api.Models
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public double Speed { get; set; }
-        public bool Ignition { get; set; }
-        public bool Engine { get; set; }
+        public bool? Ignition { get; set; }
+        public bool? Engine { get; set; }
     }
 }
